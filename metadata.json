@@ -1,0 +1,15 @@
+{
+  "name": "liam-REAdemo",
+  "version": "0.1.0",
+  "author": "Liam Nunns",
+  "summary": "Module to fulfil the installation of Sinatra app for REA engineering demo",
+  "license": "Apache-2.0",
+  "source": "https://github.com/lnunns/REAdemo",
+  "project_page": "https://github.com/lnunns/REAdemo",
+  "issues_url": "https://github.com/lnunns/REAdemo/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ],
+  "data_provider": null
+}
+
