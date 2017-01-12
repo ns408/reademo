@@ -10,4 +10,5 @@ class reademo::install (
  service { 'nginx':
           enable  => true,
           ensure  => running,
+        }
 }
