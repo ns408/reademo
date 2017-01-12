@@ -6,12 +6,12 @@ class reademo::install (
     }
   package { 'nginx':
           ensure  => present,
-
-        } -> # and then:
+        }
  service { 'nginx':
           enable  => true,
           ensure  => running,
-        } -> # and then:
+          require => Package['nginx'],
+        }
 file { '/etc/nginx/conf.d/passenger.conf':
           ensure  => present,
           content => template('reademo/nginxpassenger.erb'),
@@ -19,5 +19,6 @@ file { '/etc/nginx/conf.d/passenger.conf':
           group   => 'nginx',
           mode    => '0644',
           notify  => Service['nginx'],
+          require => Package['nginx'],
         }
 }
