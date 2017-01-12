@@ -1,4 +1,4 @@
-class reademo::ruby (
+class reademo::nginx (
 )
 {
 file { '/etc/nginx/conf.d/passenger.conf':
