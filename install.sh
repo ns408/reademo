@@ -26,4 +26,8 @@ yum install git -y
 echo "pull down reademo code into correct directory, and move site.pp into manifests path"
 cd /etc/puppetlabs/code/environments/production/modules/
 git clone https://github.com/lnunns/reademo.git
-mv /etc/puppetlabs/code/environment/production/modules/reademo/site.pp /etc/puppetlabs/code/environments/production/manifests/
+mv /etc/puppetlabs/code/environment/production/modules/reademo/files/site.pp /etc/puppetlabs/code/environments/production/manifests/
+echo "install puppet module puppetlabs-ruby"
+puppet module install puppetlabs-ruby
+echo "executing Puppet module"
+puppet apply /etc/puppetlabs/code/environment/production/manifests/site.pp
