@@ -67,6 +67,12 @@ Existing Puppet environment
 3. add to site.pp of relevant nodes (open source), or use Puppet console or preferred ENC (Puppet Enterprise)
 4. run puppet agent -t on in scope node.
 
+Confirmation of installation of products can be completed by determining the fully qualified hostname, and running curl
+e.g.
+curl http://ip-172-31-26-80.us-west-2.compute.internal
+
+All firewall configuration has been kept out of scope of this module for compatibility reasons.
+
 
 ### Beginning with REAdemo
 
