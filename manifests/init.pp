@@ -43,9 +43,9 @@
 # Copyright 2017 Your name here, unless otherwise noted.
 #
 class reademo (
-$ruby_version = "2.2.4",
-$ruby_home = "/usr/bin/ruby",
-$epel_repo = "https://dl.fedoraproject.org/pub/epel/7/x86_64/",
+$ruby_version = 'latest',
+$ruby_home = '/usr/bin/ruby',
+$epel_repo = 'https://dl.fedoraproject.org/pub/epel/7/x86_64/',
 $passenger_repo = 'https://oss-binaries.phusionpassenger.com/yum/passenger/el/$releasever/$basearch',
 )
 {
