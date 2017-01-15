@@ -13,7 +13,7 @@ inherits reademo
       }
   user { "nginx":
         ensure   => present,
-        group    => 'web',
+        groups    => 'web',
        }
   file { "/var/www":
     ensure => directory,
