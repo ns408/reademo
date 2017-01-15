@@ -2,10 +2,7 @@ class reademo::app (
 )
 inherits reademo
 {
-  group {"web":
-        ensure  => present,
-        before => User['rea'],
-      }
+
   user { "rea":
         ensure   => present,
         home     => '/var/www/rea/',

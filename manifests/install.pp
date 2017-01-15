@@ -5,6 +5,9 @@ inherits reademo
   package { 'passenger':
      ensure   => present,
     }
+    group {"web":
+          ensure  => present,
+        }
     user { "nginx":
           ensure   => present,
           groups    => 'web',
