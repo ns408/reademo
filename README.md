@@ -14,70 +14,73 @@
 
 ## Description
 
-Start with a one- or two-sentence summary of what the module does and/or what
-problem it solves. This is your 30-second elevator pitch for your module.
-Consider including OS/Puppet version it works with.
+This module is designed to install Ruby via puppetlabs-ruby, Passenger, and Nginx.
+It configures this environment accordingly for the rea demo application, pulls the git repo and deploys it
 
-You can give more descriptive information in a second paragraph. This paragraph
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?" If your module has a range of functionality (installation, configuration,
-management, etc.), this is the time to mention it.
+It's been setup in such a way that a server requires direct internet access, however could be utilized behind a HTTP proxy with small changes
+namely configuring proxy in yum.conf, and exporting http and https proxy environment variables.
+
+Puppet has provided published modules to manage all components that this module manages with the exception of the custom application, the reason these were not used were simply that it would make this demo unfortunately short, and not provide much insight into my skills.
+In reality, I would use these pre-built, supported modules and make modifications in wrapper modules, there's no point reinventing the wheel under normal circumstances.
 
 ## Setup
 
-### What REAdemo affects **OPTIONAL**
+### What REAdemo affects
 
-If it's obvious what your module touches, you can skip this section. For
-example, folks can probably figure out that your mysql_instance module affects
-their MySQL instances.
+Install script deploys Puppet, Git, clones down Puppet code
 
-If there's more that they should know about, though, this is the place to mention:
+Deploys and manages Nginx
 
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute.
-* Dependencies that your module automatically installs.
-* Warnings or other important notices.
+Deploys and managed Passenger (Ruby Container)
 
-### Setup Requirements **OPTIONAL**
+Deploys Ruby demo hello world app
 
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
+Deploys and manages Ruby, RubyGems, Bundler
 
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you might want to include an additional "Upgrading" section
-here.
+This module installs Git, and requires a valid hostname for server identification in nginx (can be overriden with small modification in init.pp)
+Creates rea user, web group and sets up /var/www/rea directory with locked down privileges
+
+### Setup Requirements
+
+The Red Hat/CentOS optionals repository must be enabled.
+This repository chooses not to manage it due to subscription-manager restrictions
+
+Using Internet facing install.sh
+1. enable optionals repository
+2. copy install.sh script in root path of this repository to server and execute it
+2. (b) alternatively, install git on your server, clone this repository down, and execute the shell script that way
+
+Behind Proxy (unsupported)
+1. set http, https proxy global environment variables
+2. set proxy settings in yum.conf
+3. copy install.sh script in root path of this repository to server and execute it.
+
+Closed environment (internally managed repositories)
+1. override parameters in init.pp to suit internal repository URLS
+2. puppet apply site.pp
+
 
 ### Beginning with REAdemo
 
-The very basic steps needed for a user to get the module up and running. This
-can include setup steps, if necessary, or it can be an example of the most
-basic use of the module.
+This is a fully contained deployment, in real production use with an existing Puppet environment you would utilize Hiera to override parameters.
+However for the purposes of the demo the class call within /etc/puppetlabs/environments/production/manifests/site.pp can be adjusted to override parameters, or hard-code them in init.pp... it's a demo after all.
 
-## Usage
 
-This section is where you describe how to customize, configure, and do the
-fancy stuff with your module here. It's especially helpful if you include usage
-examples and code samples for doing things with your module.
+In the event of an existing Puppet environment, simply fulfil the action within the install.sh that clones the module down to the /modules path, and include it in your site.pp or ENC, it will work correctly regardless.
 
-## Reference
-
-Here, include a complete list of your module's classes, types, providers,
-facts, along with the parameters for each. Users refer to this section (thus
-the name "Reference") to find specific details; most users don't read it per
-se.
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc. If there
-are Known Issues, you might want to include them under their own heading here.
+Red Hat 7/CentOS 7 compatible only, it can be easily expanded to CentOS/Red Hat 5/6/7 but time prohibited easy testing.
+Support could be manually added by using the overridable parameters to reference appropriate repositories, the rest of the logic is completely correct.
+
+This solution has been customized for the reademo application, it won't scale beyond this demo without minor adjustments, good systems engineering principles have been applied where possible to make this scalable, however time constraints mean it's not truly "finished".
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
+This module is completely available for any purpose REA deems useful, my only request is that I'm not provided credit for this module should I not be employed by REA.
+Fork it, and maintain it as you see fit.
 
 ## Release Notes/Contributors/Etc. **Optional**
 
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You can also add any additional sections you feel
-are necessary or important to include here. Please use the `## ` header.
+Credit to Puppetlabs-ruby for the awesome module they wrote that prevents the need for RVM style package managers
