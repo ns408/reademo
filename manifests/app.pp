@@ -28,6 +28,9 @@ class reademo::app (
   creates => '/var/www/rea/config.ru',
   user    => 'rea',
 }
-
-
+  exec { "/usr/local/bundle install --deployment":
+  cwd     => '/var/www/rea/',
+  user    => 'rea',
+  creates => '/var/www/rea/bin/rackup',
+  }
 }
