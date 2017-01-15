@@ -4,7 +4,6 @@ inherits reademo
 {
   group {"web":
         ensure  => present,
-        members => 'nginx',
         before => User['rea'],
       }
   user { "rea":
@@ -12,6 +11,10 @@ inherits reademo
         home     => '/var/www/rea/',
         gid   => 'web',
       }
+  user { "nginx":
+        ensure   => present,
+        group    => 'web',
+       }
   file { "/var/www":
     ensure => directory,
     mode => '0750',
