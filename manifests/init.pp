@@ -52,6 +52,6 @@ $passenger_repo = 'https://oss-binaries.phusionpassenger.com/yum/passenger/el/$r
 class { '::reademo::repo': } -> # and then:
 class { '::reademo::ruby': } -> # and then:
 class { '::reademo::install': } -> # and then:
-class { '::reademo::nginx': } -> # and then:
+class { '::reademo::nginx': }
 class { '::reademo::app': }
 }
