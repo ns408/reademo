@@ -19,16 +19,18 @@ It configures this environment accordingly, with managed configuration files, ha
 
 It's been setup in such a way that a server this module is run on requires direct internet access, however could be utilized behind a HTTP proxy with small changes documented below.
 
-This module is for demo purposes, in reality, a systems engineer would choose Puppet supported pre-built modules that already exist, and make modifications in wrapper modules or Hiera, the reason these were not used in this module was because it would make a poor skills show-case other than demonstrating my efficiency at googling.
-In normal circumstances I would also use those pre-build modules, however in the spirit of the brief, I chose to write my own simple adaptations suited to the application.
+This module is for demo purposes, in reality, a systems engineer would choose Puppet supported pre-built modules that already exist, and make modifications in wrapper modules or Hiera.
+
+In normal circumstances I would also use those pre-build modules, however in the spirit of the brief, I chose to create my own directly suited to the application provided.
 
 
 ## Setup
 
 ### What REAdemo affects
 
-Install script deploys Puppet, Git, and clones https://github.com/lnunns/reademo into the puppetlabs code path.
+The install script deploys Puppet, Git, and clones https://github.com/lnunns/reademo into the puppetlabs code path.
 it then moves an already created site.pp into the default manifests directory, and executes puppet apply against it.
+
 This script is for ease of testing by the person reviewing this module, and simplifies prerequisite management
 
 Deploys and manages Ruby, RubyGems, Bundler
@@ -73,6 +75,7 @@ curl http://ip-172-31-26-80.us-west-2.compute.internal
 
 All firewall configuration has been kept out of scope of this module for compatibility reasons.
 
+The install script can be run as many times as required, it may present some errors for some tasks if executed multiple times, however it won't affect the puppet code, which is where the real work is done.
 
 ### Beginning with REAdemo
 
