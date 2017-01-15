@@ -1,13 +1,13 @@
 class reademo::app (
 )
 {
+  group {'web":
+        ensure  => present,
+      }
   user { "rea":
         ensure   => present,
         home     => '/var/www/rea/',
-      }
-  group {'web":
-        ensure  => present,
-        members => 'rea',
+        groups   => 'web',
       }
   file { "/var/www":
     ensure => directory,
