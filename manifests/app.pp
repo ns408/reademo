@@ -29,7 +29,7 @@ inherits reademo
   creates => '/var/www/rea/config.ru',
   user    => 'rea',
 }
-  exec { "/usr/local/bin/bundle install --deployment":
+  exec { "/usr/local/bin/bundle install":
   cwd     => '/var/www/rea/',
   user    => 'rea',
   creates => '/var/www/rea/bin/rackup',
