@@ -21,7 +21,7 @@ file { '/etc/nginx/conf.d/passenger.conf':
           notify  => Service['nginx'],
           require => Package['nginx'],
         }
-file { '/etc/nginx/conf.d/passenger.conf':
+file { '/etc/nginx/conf.d/rea.conf':
           ensure  => present,
           content => template('reademo/rea.erb'),
           owner   => 'nginx',
