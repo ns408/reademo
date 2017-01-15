@@ -43,7 +43,7 @@ mode    => '0644',
 notify  => Service['nginx'],
 require => Package['nginx'],
 }
-file { '/etc/nginx/conf.d/nginx.conf':
+file { '/etc/nginx/nginx.conf':
 ensure  => present,
 content => template('reademo/nginx.erb'),
 owner   => 'nginx',
