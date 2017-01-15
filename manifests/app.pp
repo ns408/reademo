@@ -1,5 +1,6 @@
 class reademo::app (
 )
+inherits reademo
 {
   group {"web":
         ensure  => present,

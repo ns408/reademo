@@ -1,5 +1,6 @@
 class reademo::install (
 )
+inherits reademo
 {
   package { 'passenger':
      ensure   => present,

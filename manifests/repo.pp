@@ -1,5 +1,6 @@
 class reademo::repo (
 )
+inherits reademo
 {
 yumrepo {'epel':
 ensure => present,
