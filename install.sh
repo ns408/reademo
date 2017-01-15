@@ -20,6 +20,10 @@ echo "Unsupported Operating system, please use CentOS/Red Hat 5/6/7"
 exit 1
 fi
 echo "installing puppet agent via yum"
-yum install puppet-agent
+yum install puppet-agent -y
 echo "installing git client"
-yum install git
+yum install git -y
+echo "pull down reademo code into correct directory, and move site.pp into manifests path"
+cd /etc/puppetlabs/code/environments/production/modules/
+git clone https://github.com/lnunns/reademo.git
+mv /etc/puppetlabs/code/environment/production/modules/reademo/site.pp /etc/puppetlabs/code/environments/production/manifests/
