@@ -1,7 +1,7 @@
 class reademo::app (
 )
 {
-  group {'web":
+  group {"web":
         ensure  => present,
       }
   user { "rea":
