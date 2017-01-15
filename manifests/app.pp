@@ -5,9 +5,14 @@ class reademo::app (
         ensure   => present,
         home     => '/var/www/rea/',
       }
+  group {'web":
+        ensure  => present,
+        members => 'rea',
+      }
   file { "/var/www":
     ensure => directory,
     mode => '0750',
+    group => 'web',
   }
   file { "/var/www/rea":
     ensure => directory,
