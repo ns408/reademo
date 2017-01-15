@@ -1,7 +1,7 @@
 ###This file managed by Puppet, see reademo (RealEstate demo module - Lnunns)
 server {
     listen 80;
-    server_name <%= @fqdn %> www.<%= @fqdn %>;
+    server_name <%= @server_binding %> www.<%= @server_binding %>;
 
     #hardening prevent server ID leakage
     server_tokens        off;

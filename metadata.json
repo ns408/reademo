@@ -1,5 +1,5 @@
 {
-  "name": "liam-REAdemo",
+  "name": "liam-reademo",
   "version": "0.1.0",
   "author": "Liam Nunns",
   "summary": "Module to fulfil the installation of Sinatra app for REA engineering demo",
@@ -12,4 +12,3 @@
   ],
   "data_provider": null
 }
-
