@@ -28,6 +28,7 @@ $passenger_repo = 'https://oss-binaries.phusionpassenger.com/yum/passenger/el/$r
 $server_binding = $fqdn,
 )
 {
+class { '::reademo::packages': } -> # and then:
 class { '::reademo::repo': } -> # and then:
 class { '::reademo::ruby': } -> # and then:
 class { '::reademo::install': } -> # and then:
