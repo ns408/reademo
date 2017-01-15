@@ -11,10 +11,6 @@ inherits reademo
         home     => '/var/www/rea/',
         gid   => 'web',
       }
-  user { "nginx":
-        ensure   => present,
-        groups    => 'web',
-       }
   file { "/var/www":
     ensure => directory,
     mode => '0750',

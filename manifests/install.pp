@@ -5,8 +5,13 @@ inherits reademo
   package { 'passenger':
      ensure   => present,
     }
+    user { "nginx":
+          ensure   => present,
+          groups    => 'web',
+         }
   package { 'nginx':
           ensure  => present,
+          require => User['nginx'],
         }
  service { 'nginx':
           enable  => true,
