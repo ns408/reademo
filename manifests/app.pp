@@ -31,5 +31,6 @@ inherits reademo
   environment => ["HOME=/var/www/rea/"],
   user    => 'rea',
   creates => '/var/www/rea/bin/rackup',
+  notify  => Service['nginx'],
   }
 }
