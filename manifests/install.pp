@@ -34,4 +34,13 @@ file { '/etc/nginx/conf.d/rea.conf':
           notify  => Service['nginx'],
           require => Package['nginx'],
         }
+file { '/etc/nginx/conf.d/buffer.conf':
+          ensure  => present,
+          content => template('reademo/buffer.erb'),
+          owner   => 'nginx',
+          group   => 'nginx',
+          mode    => '0644',
+          notify  => Service['nginx'],
+          require => Package['nginx'],
+                }
 }
