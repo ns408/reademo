@@ -5,7 +5,7 @@ inherits reademo
   package { 'passenger':
      ensure   => present,
     }
-    group {"web":
+    group { "web":
           ensure  => present,
         }
     user { "nginx":
@@ -15,11 +15,6 @@ inherits reademo
   package { 'nginx':
           ensure  => present,
           require => User['nginx'],
-        }
- service { 'nginx':
-          enable  => true,
-          ensure  => running,
-          require => Package['nginx'],
         }
 file { '/etc/nginx/conf.d/passenger.conf':
           ensure  => present,
