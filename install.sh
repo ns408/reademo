@@ -28,6 +28,6 @@ cd /etc/puppetlabs/code/environments/production/modules/
 git clone https://github.com/lnunns/reademo.git
 mv /etc/puppetlabs/code/environments/production/modules/reademo/files/site.pp /etc/puppetlabs/code/environments/production/manifests/
 echo "install puppet module puppetlabs-ruby"
-puppet module install puppetlabs-ruby
+/opt/puppetlabs/bin/puppet module install puppetlabs-ruby
 echo "executing Puppet module"
-puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp
+/opt/puppetlabs/bin/puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp
