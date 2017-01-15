@@ -1,7 +1,7 @@
 ###This file managed by Puppet, see reademo (RealEstate demo module - Lnunns)
 server {
     listen 80;
-    server_name <%= @hostname %>;
+    server_name <%= @fqdn %>;
 
     # Tell Nginx and Passenger where your app's 'public' directory is
     root /var/www/rea/public;
